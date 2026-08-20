@@ -1,4 +1,4 @@
-// 1. Inisialisasi Keranjang dari localStorage (jika ada data tersimpan)
+// 1. Ambil data keranjang dari localStorage saat halaman dimuat
 let cart = JSON.parse(localStorage.getItem('brothers_cart')) || [];
 let currentSelectedProduct = null;
 let currentLang = 'EN';
@@ -36,18 +36,19 @@ const sampleProducts = [
 
 document.addEventListener('DOMContentLoaded', () => {
     fetchProducts();
-    updateCartUI(); // Muat ulang tampilan keranjang dari localStorage saat pertama dibuka
+    updateCartUI(); // Langsung render item keranjang yang tersimpan
 });
 
 function fetchProducts() {
     fetch('http://localhost:3000/api/products')
         .then(res => res.json())
         .then(products => renderProducts(products))
-        .catch(() => renderProducts(sampleProducts)); // Fallback ke data lokal jika server mati
+        .catch(() => renderProducts(sampleProducts));
 }
 
 function renderProducts(products) {
     const container = document.getElementById('product-list');
+    if (!container) return;
     container.innerHTML = '';
     
     products.forEach(p => {
@@ -64,7 +65,7 @@ function renderProducts(products) {
     });
 }
 
-// 2. Simpan Keranjang ke localStorage Setiap Ada Perubahan
+// 2. Fungsi simpan array keranjang ke localStorage
 function saveCartToStorage() {
     localStorage.setItem('brothers_cart', JSON.stringify(cart));
 }
@@ -79,15 +80,19 @@ document.getElementById('btn-confirm-add').addEventListener('click', () => {
         size, color
     });
 
-    saveCartToStorage(); // Simpan data ke browser
+    saveCartToStorage(); // Simpan ke browser
     updateCartUI();
     closeVariantModal();
     toggleCartModal();
 });
 
 function updateCartUI() {
-    document.getElementById('cart-count').innerText = cart.length;
+    const countEl = document.getElementById('cart-count');
+    if (countEl) countEl.innerText = cart.length;
+
     const container = document.getElementById('cart-items-container');
+    if (!container) return;
+    
     let total = 0;
     container.innerHTML = '';
 
@@ -109,7 +114,8 @@ function updateCartUI() {
         });
     }
 
-    document.getElementById('cart-total-price').innerText = `Rp ${total.toLocaleString('id-ID')}`;
+    const totalEl = document.getElementById('cart-total-price');
+    if (totalEl) totalEl.innerText = `Rp ${total.toLocaleString('id-ID')}`;
 }
 
 function removeItem(index) {
