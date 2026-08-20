@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brothers Clothes Store</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome untuk ikon keranjang -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header>
+        <div class="navbar">
+            <h1 class="logo">Brothers Clothes</h1>
+            <div class="cart-icon-wrapper" onclick="toggleCartModal()">
+                <i class="fa-solid fa-cart-shopping cart-icon"></i>
+                <span id="cart-count" class="cart-badge">0</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2>Katalog Produk</h2>
+        <div id="product-list" class="product-grid">
+            <!-- Data produk akan di-load otomatis lewat JS -->
+        </div>
+
+        <section class="store-info">
+            <h3>Informasi & Alamat Toko</h3>
+            <p><strong>Nama Toko:</strong> Brothers Clothes Store</p>
+            <p><strong>Alamat Lengkap:</strong> Jl. Pemuda No. 45, Jakarta Timur</p>
+            <p><strong>Jam Operasional:</strong> 10.00 - 22.00 WIB</p>
+            <p><strong>Opsi Pengiriman:</strong> JNE, J&T, GoSend, GrabExpress</p>
+        </section>
+    </main>
+
+    <!-- Modal Pilihan Varian & Rekomendasi Ukuran (TB/BB) -->
+    <div id="variant-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeVariantModal()">&times;</span>
+            <h3 id="modal-product-name">Pilih Ukuran & Warna</h3>
+            
+            <div class="size-recommender">
+                <h4><i class="fa-solid fa-calculator"></i> Rekomendasi Ukuran</h4>
+                <div class="input-inline">
+                    <div>
+                        <label>Tinggi Badan (cm):</label>
+                        <input type="number" id="input-tb" placeholder="Contoh: 170" oninput="hitungRekomendasiUkuran()">
+                    </div>
+                    <div>
+                        <label>Berat Badan (kg):</label>
+                        <input type="number" id="input-bb" placeholder="Contoh: 65" oninput="hitungRekomendasiUkuran()">
+                    </div>
+                </div>
+                <p id="recommendation-result" class="recommend-text">Masukkan TB dan BB untuk melihat saran ukuran.</p>
+            </div>
+
+            <div class="form-group">
+                <label for="select-size">Pilih Ukuran:</label>
+                <select id="select-size">
+                    <option value="S">S</option>
+                    <option value="M" selected>M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                    <option value="XXL">XXL</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="select-color">Pilih Warna:</label>
+                <select id="select-color">
+                    <option value="Hitam">Hitam</option>
+                    <option value="Putih">Putih</option>
+                    <option value="Navy">Navy</option>
+                    <option value="Denim">Denim</option>
+                </select>
+            </div>
+
+            <button id="btn-confirm-add" class="btn-primary">Tambah ke Keranjang</button>
+        </div>
+    </div>
+
+    <!-- Modal Detail Keranjang Belanja -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="toggleCartModal()">&times;</span>
+            <h3>Keranjang Belanja Kamu</h3>
+            <div id="cart-items-container">
+                <!-- Item keranjang di-render via JS -->
+            </div>
+            <div class="cart-summary">
+                <h4>Total: <span id="cart-total-price">Rp 0</span></h4>
+                <button onclick="checkoutWhatsApp()" class="btn-whatsapp">
+                    <i class="fa-brands fa-whatsapp"></i> Checkout via WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
