@@ -5,96 +5,145 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brothers Clothes Store</title>
     <link rel="stylesheet" href="style.css">
-    <!-- FontAwesome untuk ikon keranjang -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
     <!-- Header / Navbar -->
-    <header>
-        <div class="navbar">
-            <h1 class="logo">Brothers Clothes</h1>
-            <div class="cart-icon-wrapper" onclick="toggleCartModal()">
-                <i class="fa-solid fa-cart-shopping cart-icon"></i>
-                <span id="cart-count" class="cart-badge">0</span>
+    <header class="navbar">
+        <div class="nav-container">
+            <h1 class="logo">BROTHERS<span>CLOTHES</span></h1>
+            <nav class="nav-links">
+                <a href="#hero" data-id="Home" data-en="Home">Home</a>
+                <a href="#katalog" data-id="Katalog" data-en="Catalog">Katalog</a>
+                <a href="#info-toko" data-id="Info Toko" data-en="Store Info">Info Toko</a>
+            </nav>
+            <div class="right-nav">
+                <button id="lang-toggle" onclick="toggleLanguage()">EN</button>
+                <div class="cart-icon-wrapper" onclick="toggleCartModal()">
+                    <i class="fa-solid fa-cart-shopping cart-icon"></i>
+                    <span id="cart-count" class="cart-badge">0</span>
+                </div>
             </div>
         </div>
     </header>
 
-    <main class="container">
-        <h2>Katalog Produk</h2>
-        <div id="product-list" class="product-grid">
-            <!-- Data produk akan di-load otomatis lewat JS -->
+    <!-- Hero Section -->
+    <section id="hero" class="hero-streetwear">
+        <div class="hero-left">
+            <span class="badge-tag">// DROP_09 // UTILITY CORE AVAILABLE NOW</span>
+            <h1 class="hero-title">Raw Style.<br>Urban Armour.</h1>
+            <p class="hero-desc" data-id="Pakaian streetwear teknikal yang dirancang untuk bertahan di lanskap perkotaan. Kain berdensitas tinggi dan potong brutalist." data-en="Engineered street garments built for survival in the concrete landscape. High-density fabrics, brutalist tailoring, uncompromising silhouettes.">
+                Engineered street garments built for survival in the concrete landscape. High-density fabrics, brutalist tailoring, uncompromising silhouettes.
+            </p>
+            <div class="hero-btns">
+                <a href="#katalog" class="btn-primary-neon" data-id="PRODUK TERBARU →" data-en="NEW ARRIVALS →">PRODUK TERBARU →</a>
+                <a href="#katalog" class="btn-outline" data-id="JELAJAH KATALOG" data-en="EXPLORE CATALOG">JELAJAH KATALOG</a>
+            </div>
+        </div>
+        <div class="hero-right">
+            <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=800&auto=format&fit=crop" alt="Model Brother Clothes">
+        </div>
+    </section>
+
+    <!-- Main Content Katalog -->
+    <main class="container" id="katalog">
+        <div class="section-header">
+            <span class="sub-tag">// ESSENTIAL ARMOUR</span>
+            <h2 id="catalog-title">CURRENT RELEASES</h2>
         </div>
 
-        <section class="store-info">
-            <h3>Informasi & Alamat Toko</h3>
-            <p><strong>Nama Toko:</strong> Brothers Clothes Store</p>
-            <p><strong>Alamat Lengkap:</strong> Jl. Pemuda No. 45, Jakarta Timur</p>
-            <p><strong>Jam Operasional:</strong> 10.00 - 22.00 WIB</p>
-            <p><strong>Opsi Pengiriman:</strong> JNE, J&T, GoSend, GrabExpress</p>
+        <div id="product-list" class="product-grid">
+            <!-- Data produk contoh jika API lokal belum aktif -->
+        </div>
+
+        <!-- Section Info Toko -->
+        <section id="info-toko" class="store-info">
+            <h3><i class="fa-solid fa-store"></i> <span data-id="Informasi & Alamat Toko" data-en="Store Info & Location">Informasi & Alamat Toko</span></h3>
+            <div class="info-grid">
+                <div class="info-item">
+                    <strong data-id="Nama Toko" data-en="Store Name">Nama Toko</strong>
+                    <p>Brothers Clothes Store</p>
+                </div>
+                <div class="info-item">
+                    <strong data-id="Alamat Lengkap" data-en="Full Address">Alamat Lengkap</strong>
+                    <p>Jl. Pemuda No. 45, Jakarta Timur</p>
+                </div>
+                <div class="info-item">
+                    <strong data-id="Jam Operasional" data-en="Operating Hours">Jam Operasional</strong>
+                    <p>10.00 - 22.00 WIB</p>
+                </div>
+                <div class="info-item">
+                    <strong data-id="Opsi Pengiriman" data-en="Shipping Methods">Opsi Pengiriman</strong>
+                    <p>JNE, J&T, GoSend, GrabExpress</p>
+                </div>
+            </div>
         </section>
     </main>
 
-    <!-- Modal Pilihan Varian & Rekomendasi Ukuran (TB/BB) -->
+    <!-- Modal Varian Produk -->
     <div id="variant-modal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeVariantModal()">&times;</span>
             <h3 id="modal-product-name">Pilih Ukuran & Warna</h3>
             
             <div class="size-recommender">
-                <h4><i class="fa-solid fa-calculator"></i> Rekomendasi Ukuran</h4>
+                <h4><i class="fa-solid fa-calculator"></i> <span data-id="Rekomendasi Ukuran" data-en="Size Recommendation">Rekomendasi Ukuran</span></h4>
                 <div class="input-inline">
-                    <div>
-                        <label>Tinggi Badan (cm):</label>
-                        <input type="number" id="input-tb" placeholder="Contoh: 170" oninput="hitungRekomendasiUkuran()">
+                    <div class="input-field">
+                        <label data-id="Tinggi Badan (cm):" data-en="Height (cm):">Tinggi Badan (cm):</label>
+                        <input type="number" id="input-tb" placeholder="170" oninput="hitungRekomendasiUkuran()">
                     </div>
-                    <div>
-                        <label>Berat Badan (kg):</label>
-                        <input type="number" id="input-bb" placeholder="Contoh: 65" oninput="hitungRekomendasiUkuran()">
+                    <div class="input-field">
+                        <label data-id="Berat Badan (kg):" data-en="Weight (kg):">Berat Badan (kg):</label>
+                        <input type="number" id="input-bb" placeholder="65" oninput="hitungRekomendasiUkuran()">
                     </div>
                 </div>
                 <p id="recommendation-result" class="recommend-text">Masukkan TB dan BB untuk melihat saran ukuran.</p>
             </div>
 
             <div class="form-group">
-                <label for="select-size">Pilih Ukuran:</label>
+                <label for="select-size" data-id="Pilih Ukuran:" data-en="Select Size:">Pilih Ukuran:</label>
                 <select id="select-size">
                     <option value="S">S</option>
                     <option value="M" selected>M</option>
                     <option value="L">L</option>
                     <option value="XL">XL</option>
-                    <option value="XXL">XXL</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="select-color">Pilih Warna:</label>
+                <label for="select-color" data-id="Pilih Warna:" data-en="Select Color:">Pilih Warna:</label>
                 <select id="select-color">
-                    <option value="Hitam">Hitam</option>
-                    <option value="Putih">Putih</option>
+                    <option value="Hitam / Black">Hitam / Black</option>
+                    <option value="Putih / White">Putih / White</option>
                     <option value="Navy">Navy</option>
-                    <option value="Denim">Denim</option>
                 </select>
             </div>
 
-            <button id="btn-confirm-add" class="btn-primary">Tambah ke Keranjang</button>
+            <button id="btn-confirm-add" class="btn-primary-neon" data-id="Tambah & Buka Keranjang" data-en="Add & View Cart">Tambah & Buka Keranjang</button>
         </div>
     </div>
 
-    <!-- Modal Detail Keranjang Belanja -->
+    <!-- Modal Detail Keranjang -->
     <div id="cart-modal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="toggleCartModal()">&times;</span>
-            <h3>Keranjang Belanja Kamu</h3>
-            <div id="cart-items-container">
-                <!-- Item keranjang di-render via JS -->
-            </div>
+            <h3 data-id="Keranjang Belanja Kamu" data-en="Your Shopping Cart">Keranjang Belanja Kamu</h3>
+            <div id="cart-items-container"></div>
             <div class="cart-summary">
                 <h4>Total: <span id="cart-total-price">Rp 0</span></h4>
-                <button onclick="checkoutWhatsApp()" class="btn-whatsapp">
-                    <i class="fa-brands fa-whatsapp"></i> Checkout via WhatsApp
-                </button>
+                <div class="checkout-buttons">
+                    <button onclick="checkoutWhatsApp()" class="btn-whatsapp">
+                        <i class="fa-brands fa-whatsapp"></i> Checkout via WhatsApp
+                    </button>
+                    <button onclick="checkoutShopee()" class="btn-shopee">
+                        <i class="fa-solid fa-bag-shopping"></i> Checkout via Shopee
+                    </button>
+                    <button onclick="checkoutTikTok()" class="btn-tiktok">
+                        <i class="fa-brands fa-tiktok"></i> Checkout via TikTok Shop
+                    </button>
+                </div>
             </div>
         </div>
     </div>
