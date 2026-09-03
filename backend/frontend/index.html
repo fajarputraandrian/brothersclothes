@@ -9,7 +9,44 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+<!-- Hamburger Icon / Trigger Menu -->
+<button class="hamburger-btn" onclick="toggleSidebarMenu()">
+    <i class="fa-solid fa-bars"></i>
+</button>
 
+<!-- Fullscreen / Side Overlay Menu -->
+<div id="side-menu" class="side-menu-overlay">
+    <div class="side-menu-content">
+        <!-- Close Button -->
+        <span class="side-close-btn" onclick="toggleSidebarMenu()">&times;</span>
+
+        <!-- Navigation Links -->
+        <nav class="side-nav-links">
+            <a href="#katalog" onclick="toggleSidebarMenu()">SHOP</a>
+            <a href="#katalog" onclick="toggleSidebarMenu()">REUDE COLLECTIONS</a>
+            <a href="#katalog" onclick="toggleSidebarMenu()">RAKED COLLECTIONS</a>
+            <a href="#info-toko" onclick="toggleSidebarMenu()">OFFER US</a>
+            <a href="#hero" onclick="toggleSidebarMenu()">2026 LOOKBOOK</a>
+            <a href="#info-toko" onclick="toggleSidebarMenu()">ABOUT</a>
+        </nav>
+
+        <!-- Secondary Info Links -->
+        <div class="side-secondary-links">
+            <a href="#info-toko">FAQs</a>
+            <a href="#info-toko">Careers</a>
+            <a href="#info-toko">Contact Us</a>
+            <a href="#info-toko">Account</a>
+        </div>
+
+        <!-- Footer / Action Badge -->
+        <div class="side-footer">
+            <button class="btn-join-backfile">
+                <i class="fa-solid fa-shapes"></i> Join Backfile
+            </button>
+            <p class="copyright-text">&copy; 2026 REUDE</p>
+        </div>
+    </div>
+</div>
     <!-- Header / Navbar -->
     <header class="navbar">
         <div class="nav-container">

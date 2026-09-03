@@ -162,3 +162,10 @@ function checkoutShopee() {
 function checkoutTikTok() {
     window.open('https://tiktok.com/@brothersclothes', '_blank');
 }
+
+function toggleSidebarMenu() {
+    const menu = document.getElementById('side-menu');
+    if (menu) {
+        menu.classList.toggle('active');
+    }
+}
