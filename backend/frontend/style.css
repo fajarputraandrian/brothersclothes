@@ -10,6 +10,7 @@ body {
     color: #ffffff;
 }
 
+/* NAVBAR HEADER */
 header.navbar {
     background-color: #111;
     border-bottom: 1px solid #222;
@@ -27,6 +28,7 @@ header.navbar {
     margin: 0 auto;
 }
 
+/* KIRI NAVBAR: Tombol Hamburger & Logo Sejajar */
 .left-nav {
     display: flex;
     align-items: center;
@@ -37,7 +39,7 @@ header.navbar {
     background: transparent;
     border: none;
     color: #ffffff;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     cursor: pointer;
     padding: 5px;
     display: flex;
@@ -105,17 +107,17 @@ header.navbar {
     font-weight: 900;
 }
 
-/* Sidebar Overlay Styling */
+/* OVERLAY SIDE MENU (PERSIS GAMBAR REUDE) */
 .side-menu-overlay {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(12, 12, 12, 0.96);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    z-index: 999;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(20, 20, 20, 0.92);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    z-index: 9999;
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease-in-out;
@@ -131,16 +133,16 @@ header.navbar {
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
-    max-width: 420px;
+    max-width: 450px;
     margin: 0 auto;
-    padding: 60px 30px 40px;
+    padding: 70px 40px 50px;
     position: relative;
 }
 
 .side-close-btn {
     position: absolute;
-    top: 20px;
-    right: 25px;
+    top: 25px;
+    right: 30px;
     font-size: 2.2rem;
     color: #ffffff;
     cursor: pointer;
@@ -151,47 +153,53 @@ header.navbar {
     color: #d2ff00;
 }
 
+/* LINK UTAMA (Tersusun Vertikal) */
 .side-nav-links {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    margin-top: 20px;
+    gap: 22px;
+    margin-top: 10px;
 }
 
 .side-nav-links a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 1.1rem;
-    font-weight: 700;
+    color: #e5e5e5 !important;
+    text-decoration: none !important;
+    font-size: 1.15rem;
+    font-weight: 600;
     letter-spacing: 1.5px;
     text-transform: uppercase;
+    display: block;
     transition: color 0.2s ease;
 }
 
 .side-nav-links a:hover {
-    color: #d2ff00;
+    color: #d2ff00 !important;
 }
 
+/* LINK SEKUNDER (FAQs, Careers, dll) */
 .side-secondary-links {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    margin-top: 25px;
+    margin-top: 30px;
 }
 
 .side-secondary-links a {
-    color: #888888;
-    text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 500;
+    color: #888888 !important;
+    text-decoration: none !important;
+    font-size: 0.88rem;
+    font-weight: 400;
+    display: block;
+    transition: color 0.2s ease;
 }
 
 .side-secondary-links a:hover {
-    color: #ffffff;
+    color: #ffffff !important;
 }
 
+/* FOOTER BUTTON & COPYRIGHT */
 .side-footer {
-    margin-top: 30px;
+    margin-top: 40px;
 }
 
 .btn-join-backfile {
@@ -199,15 +207,15 @@ header.navbar {
     background: #ffffff;
     color: #000000;
     border: none;
-    padding: 14px;
-    border-radius: 10px;
+    padding: 14px 20px;
+    border-radius: 12px;
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 12px;
     margin-bottom: 20px;
 }
 
@@ -217,6 +225,7 @@ header.navbar {
     letter-spacing: 1px;
 }
 
+/* KODE LAINNYA */
 .hero-streetwear {
     display: flex;
     align-items: center;
