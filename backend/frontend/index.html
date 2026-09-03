@@ -5,57 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brothers Clothes Store</title>
     <link rel="stylesheet" href="style.css">
-<script src="script.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-<!-- Hamburger Icon / Trigger Menu -->
-<button class="hamburger-btn" onclick="toggleSidebarMenu()">
-    <i class="fa-solid fa-bars"></i>
-</button>
 
-<!-- Fullscreen / Side Overlay Menu -->
-<div id="side-menu" class="side-menu-overlay">
-    <div class="side-menu-content">
-        <!-- Close Button -->
-        <span class="side-close-btn" onclick="toggleSidebarMenu()">&times;</span>
-
-        <!-- Navigation Links -->
-        <nav class="side-nav-links">
-            <a href="#katalog" onclick="toggleSidebarMenu()">SHOP</a>
-            <a href="#katalog" onclick="toggleSidebarMenu()">REUDE COLLECTIONS</a>
-            <a href="#katalog" onclick="toggleSidebarMenu()">RAKED COLLECTIONS</a>
-            <a href="#info-toko" onclick="toggleSidebarMenu()">OFFER US</a>
-            <a href="#hero" onclick="toggleSidebarMenu()">2026 LOOKBOOK</a>
-            <a href="#info-toko" onclick="toggleSidebarMenu()">ABOUT</a>
-        </nav>
-
-        <!-- Secondary Info Links -->
-        <div class="side-secondary-links">
-            <a href="#info-toko">FAQs</a>
-            <a href="#info-toko">Careers</a>
-            <a href="#info-toko">Contact Us</a>
-            <a href="#info-toko">Account</a>
-        </div>
-
-        <!-- Footer / Action Badge -->
-        <div class="side-footer">
-            <button class="btn-join-backfile">
-                <i class="fa-solid fa-shapes"></i> Join Backfile
-            </button>
-            <p class="copyright-text">&copy; 2026 REUDE</p>
-        </div>
-    </div>
-</div>
     <!-- Header / Navbar -->
     <header class="navbar">
         <div class="nav-container">
-            <h1 class="logo">BROTHERS<span>CLOTHES</span></h1>
+            <div class="left-nav">
+                <!-- Tombol Hamburger disatukan ke dalam Navbar -->
+                <button class="hamburger-btn" onclick="toggleSidebarMenu()" aria-label="Toggle Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <h1 class="logo">BROTHERS<span>CLOTHES</span></h1>
+            </div>
+
             <nav class="nav-links">
                 <a href="#hero" data-id="Home" data-en="Home">Home</a>
                 <a href="#katalog" data-id="Katalog" data-en="Catalog">Katalog</a>
                 <a href="#info-toko" data-id="Info Toko" data-en="Store Info">Info Toko</a>
             </nav>
+
             <div class="right-nav">
                 <button id="lang-toggle" onclick="toggleLanguage()">EN</button>
                 <div class="cart-icon-wrapper" onclick="toggleCartModal()">
@@ -65,6 +35,36 @@
             </div>
         </div>
     </header>
+
+    <!-- Fullscreen / Side Overlay Menu -->
+    <div id="side-menu" class="side-menu-overlay">
+        <div class="side-menu-content">
+            <span class="side-close-btn" onclick="toggleSidebarMenu()">&times;</span>
+
+            <nav class="side-nav-links">
+                <a href="#katalog" onclick="toggleSidebarMenu()">SHOP</a>
+                <a href="#katalog" onclick="toggleSidebarMenu()">REUDE COLLECTIONS</a>
+                <a href="#katalog" onclick="toggleSidebarMenu()">RAKED COLLECTIONS</a>
+                <a href="#info-toko" onclick="toggleSidebarMenu()">OFFER US</a>
+                <a href="#hero" onclick="toggleSidebarMenu()">2026 LOOKBOOK</a>
+                <a href="#info-toko" onclick="toggleSidebarMenu()">ABOUT</a>
+            </nav>
+
+            <div class="side-secondary-links">
+                <a href="#info-toko" onclick="toggleSidebarMenu()">FAQs</a>
+                <a href="#info-toko" onclick="toggleSidebarMenu()">Careers</a>
+                <a href="#info-toko" onclick="toggleSidebarMenu()">Contact Us</a>
+                <a href="#info-toko" onclick="toggleSidebarMenu()">Account</a>
+            </div>
+
+            <div class="side-footer">
+                <button class="btn-join-backfile">
+                    <i class="fa-solid fa-shapes"></i> Join Backfile
+                </button>
+                <p class="copyright-text">&copy; 2026 REUDE</p>
+            </div>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section id="hero" class="hero-streetwear">
@@ -91,9 +91,7 @@
             <h2 id="catalog-title">CURRENT RELEASES</h2>
         </div>
 
-        <div id="product-list" class="product-grid">
-            <!-- Data produk contoh jika API lokal belum aktif -->
-        </div>
+        <div id="product-list" class="product-grid"></div>
 
         <!-- Section Info Toko -->
         <section id="info-toko" class="store-info">
@@ -130,11 +128,11 @@
                 <div class="input-inline">
                     <div class="input-field">
                         <label data-id="Tinggi Badan (cm):" data-en="Height (cm):">Tinggi Badan (cm):</label>
-                        <input type="number" id="input-tb" placeholder="170" oninput="hitungRekomendasiUkuran()">
+                        <input type="number" id="input-tb" placeholder="170">
                     </div>
                     <div class="input-field">
                         <label data-id="Berat Badan (kg):" data-en="Weight (kg):">Berat Badan (kg):</label>
-                        <input type="number" id="input-bb" placeholder="65" oninput="hitungRekomendasiUkuran()">
+                        <input type="number" id="input-bb" placeholder="65">
                     </div>
                 </div>
                 <p id="recommendation-result" class="recommend-text">Masukkan TB dan BB untuk melihat saran ukuran.</p>
